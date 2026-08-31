@@ -34,3 +34,23 @@
   font-size: 11px;
   font-weight: bold;
 }
+.register-btn {
+  color: #38d9ff;
+  font-weight: bold;
+}
+
+.login-btn {
+  background: #38d9ff;
+  color: #06101d !important;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.register-btn:hover {
+  color: white;
+}
+
+.login-btn:hover {
+  opacity: 0.85;
+}
