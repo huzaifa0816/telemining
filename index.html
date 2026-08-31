@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MineX - Crypto Mining Dashboard</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #07111f;
+      color: white;
+    }
+
+    header {
+      width: 100%;
+      padding: 20px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #17283d;
+      background: #081522;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #38d9ff;
+    }
+
+    nav a {
+      color: #cbd5e1;
+      text-decoration: none;
+      margin-left: 25px;
+    }
+
+    nav a:hover {
+      color: #38d9ff;
+    }
+
+    .hero {
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 70px 7%;
+      gap: 40px;
+    }
+
+    .hero-text {
+      max-width: 600px;
+    }
+
+    .hero-text h1 {
+      font-size: 58px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero-text h1 span {
+      color: #38d9ff;
+    }
+
+    .hero-text p {
+      color: #9fb0c3;
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .btn {
+      padding: 14px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    .primary {
+      background: #38d9ff;
+      color: #06101d;
+    }
+
+    .secondary {
+      border: 1px solid #33475f;
+      color: white;
+    }
+
+    .mining-card {
+      width: 360px;
+      padding: 30px;
+      border-radius: 20px;
+      background: #0d1b2b;
+      border: 1px solid #20344c;
+      box-shadow: 0 0 50px rgba(56, 217, 255, 0.08);
+      text-align: center;
+    }
+
+    .coin {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 45px;
+      background: #132b3c;
+      border: 5px solid #38d9ff;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      50% {
+        transform: scale(1.08);
+        box-shadow: 0 0 35px rgba(56, 217, 255, 0.3);
+      }
+    }
+
+    .status {
+      color: #49e68c;
+      margin-bottom: 20px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .stat {
+      padding: 15px;
+      background: #091624;
+      border-radius: 10px;
+    }
+
+    .stat small {
+      color: #8da0b5;
+    }
+
+    .stat strong {
+      display: block;
+      margin-top: 6px;
+      color: #38d9ff;
+    }
+
+    .section {
+      padding: 70px 7%;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 36px;
+      margin-bottom: 15px;
+    }
+
+    .section > p {
+      color: #8fa2b7;
+      margin-bottom: 40px;
+    }
+
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .package {
+      padding: 30px;
+      background: #0d1b2b;
+      border: 1px solid #20344c;
+      border-radius: 15px;
+      text-align: left;
+    }
+
+    .package h3 {
+      color: #38d9ff;
+      margin-bottom: 15px;
+    }
+
+    .package .price {
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .package ul {
+      list-style: none;
+      color: #aebdcd;
+      line-height: 2;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      padding: 30px;
+      text-align: center;
+      color: #718399;
+      border-top: 1px solid #17283d;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-text h1 {
+        font-size: 42px;
+      }
+
+      .buttons {
+        justify-content: center;
+      }
+
+      .packages {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">⚡ MineX</div>
+
+    <nav>
+      <a href="#">Home</a>
+      <a href="#packages">Packages</a>
+      <a href="#">Dashboard</a>
+      <a href="#">Login</a>
+    </nav>
+  </header>
+
+
+  <section class="hero">
+
+    <div class="hero-text">
+      <h1>
+        The Future of <span>Crypto Mining</span>
+      </h1>
+
+      <p>
+        Welcome to MineX. Explore a modern crypto-mining dashboard
+        with mining statistics, packages and account management.
+      </p>
+
+      <div class="buttons">
+        <a href="#" class="btn primary">Start Mining</a>
+        <a href="#packages" class="btn secondary">View Packages</a>
+      </div>
+    </div>
+
+
+    <div class="mining-card">
+
+      <div class="coin">₿</div>
+
+      <div class="status">● MINING DEMO ACTIVE</div>
+
+      <div class="stats">
+
+        <div class="stat">
+          <small>Hash Rate</small>
+          <strong>125 TH/s</strong>
+        </div>
+
+        <div class="stat">
+          <small>Balance</small>
+          <strong>0.0042 BTC</strong>
+        </div>
+
+        <div class="stat">
+          <small>Mining Time</small>
+          <strong>08:42:19</strong>
+        </div>
+
+        <div class="stat">
+          <small>Status</small>
+          <strong>Online</strong>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+
+  <section class="section" id="packages">
+
+    <h2>Mining Packages</h2>
+
+    <p>Choose a package to explore the demo mining dashboard.</p>
+
+    <div class="packages">
+
+      <div class="package">
+        <h3>Starter</h3>
+        <div class="price">$10</div>
+
+        <ul>
+          <li>✓ 10 TH/s Demo Hashrate</li>
+          <li>✓ Basic Dashboard</li>
+          <li>✓ Mining Statistics</li>
+        </ul>
+
+        <a href="#" class="btn primary">Select</a>
+      </div>
+
+
+      <div class="package">
+        <h3>Pro</h3>
+        <div class="price">$50</div>
+
+        <ul>
+          <li>✓ 50 TH/s Demo Hashrate</li>
+          <li>✓ Advanced Dashboard</li>
+          <li>✓ Detailed Statistics</li>
+        </ul>
+
+        <a href="#" class="btn primary">Select</a>
+      </div>
+
+
+      <div class="package">
+        <h3>Enterprise</h3>
+        <div class="price">$100</div>
+
+        <ul>
+          <li>✓ 100 TH/s Demo Hashrate</li>
+          <li>✓ Full Dashboard</li>
+          <li>✓ Advanced Statistics</li>
+        </ul>
+
+        <a href="#" class="btn primary">Select</a>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <footer>
+    © 2026 MineX — Crypto Mining Demo Platform
+  </footer>
+
+</body>
+</html>
