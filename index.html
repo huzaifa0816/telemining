@@ -262,7 +262,7 @@
       </p>
 
       <div class="buttons">
-        <a href="#" class="btn primary">Start Mining</a>
+       <button id="startMining" class="btn primary">Start Mining</button>
         <a href="#packages" class="btn secondary">View Packages</a>
       </div>
     </div>
@@ -359,6 +359,38 @@
   <footer>
     © 2026 MineX — Crypto Mining Demo Platform
   </footer>
+<script>
+  let mining = false;
+  let balance = 0.0042;
 
+  const startButton = document.getElementById("startMining");
+
+  startButton.addEventListener("click", function () {
+
+    if (!mining) {
+      mining = true;
+
+      startButton.innerText = "⛏ Mining Started";
+      startButton.style.background = "#49e68c";
+
+      document.querySelector(".status").innerText =
+        "● MINING ACTIVE";
+
+      alert("Mining started successfully!");
+
+      setInterval(function () {
+        balance += 0.000001;
+
+        document.querySelector(".stat strong").innerText =
+          balance.toFixed(6) + " BTC";
+
+      }, 3000);
+
+    } else {
+      alert("Mining is already active!");
+    }
+
+  });
+</script>
 </body>
 </html>
